@@ -1,0 +1,104 @@
+<!DOCTYPE>
+<html>
+<head lang="ko">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ADMIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon.png">
+    <link rel="icon" href="./favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/libs/jquery.dropdown.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <script type="text/javascript" src="/libs/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript" src="/libs/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/libs/jquery.dropdown.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="top">
+            <span id="logo">@ADMIN</span>
+            <div id="profile">
+                <img src="./seokju.png" alt="profile" />
+            </div>
+        </div>
+        <div class="bottom">
+            <span id="INDEX-my-name">나석주</span>
+            <span id="INDEX-email">seokmaTD@gmail.com</span>
+        </div>
+    </header>
+
+    <div id="admin">
+        <div class="paper menu shadow">
+            <div class="header">
+                <div></div>
+                <span>Paper List</span>
+                <a class="drop-button" href="#" data-jq-dropdown="#jq-dropdown-1">
+                    <i class="material-icons">&#xE145;</i>
+                </a>
+                <div id="jq-dropdown-1" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
+                    <ul class="jq-dropdown-menu">
+                        <li><a id="btn_AddPostPaper" class="add-btn">Add Post Paper</a></li>
+                        <li><a id="btn_AddAboutPaper" class="add-btn">Add About Paper</a></li>
+                        <li><a id="btn_AddProductPaper" class="add-btn">Add Product Paper</a></li>
+                        <li><a id="btn_AddProjectPaper" class="add-btn">Add Project Paper</a></li>
+                        <li><a id="btn_AddAppPaper" class="add-btn">Add App Paper</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="PAPER_LIST" class="list">
+            </div>
+        </div>
+        <div class="paper main shadow">
+            <div id="Template"></div>
+            <div id="ADMIN_POST" class="admin-post promote">
+                <div class="section-input">
+                    <span>Title</span>
+                    <input id="post-input-title" type="text" />
+                </div>
+                <div class="section-input">
+                    <span>TitleID</span>
+                    <input id="post-input-titleId" type="number" />
+                </div>
+                <div class="section-textarea">
+                    <textarea id="post-input-text" ></textarea>
+                    <div class="preview"></div>
+                </div>
+                <div class="section-input">
+                    <span>Title-Image</span>
+                    <input id="post-input-title-image" type="text" />
+                </div>
+                <div class="section-input">
+                    <span>Tags</span>
+                    <input id="post-input-tags" type="text" />
+                </div>
+            </div>
+            <hr />
+            <div class="section-pass">
+                <span>Password</span>
+                <input id="input-password" type="password" />
+            </div>
+            <button id="submit" class="shadow">SUBMIT</button>
+            <button id="delete" class="shadow">DELETE</button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+node_modules/
+.idea/
+build/
+assets/
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
