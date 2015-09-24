@@ -32,7 +32,7 @@ PaperViewObserver.prototype.done = function(func) {
 };
 
 PaperViewObserver.prototype.addCompleteListener = function(callback) {
-    this.emitor.addEventListener('complete', callback);
+    this.emitor.addListener('complete', callback);
 };
 
 

@@ -23,7 +23,6 @@ gulp.task('build-js', function () {
         .bundle()
         .pipe(source('main.js'))
         .pipe(buffer())
-        .pipe(uglify())
         .pipe(gulp.dest('./build/js'))
         .pipe(browserSync.stream());
 });

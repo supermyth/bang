@@ -26,4 +26,4 @@ var PaperActionCreator = {
     }
 };
 
-module.exprots = PaperActionCreator;
+module.exports = PaperActionCreator;

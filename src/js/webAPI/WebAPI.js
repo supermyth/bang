@@ -22,9 +22,11 @@ var WebAPI = {
     },
 
     getPapers: function(_paperIndex) {
+        console.log("PaperIndex", _paperIndex);
+
         request
-            .get(Constants.API.GET_PAPERS)
-            .query({paperIndex: _paperIndex})
+            .post(Constants.API.GET_PAPERS)
+            .send({paperIndex: _paperIndex})
             .set('API-Key', 'GET_PAPERS')
             .set('Accept', 'application/json')
             .end(function(err,res) {

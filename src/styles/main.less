@@ -1007,6 +1007,8 @@ footer {
 
 
 .paper {
+    position: relative;
+
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -1021,8 +1023,6 @@ footer {
   -ms-flex-direction: column;
   flex-direction: column;
 
-  background-color: @color-white;
-
   margin: 1rem 0;
 
   will-change: box-shadow;
@@ -1033,7 +1033,7 @@ footer {
   -o-transition: -o-box-shadow .3s ease;
   transition: box-shadow .3s ease;
 
-  &:hover {
+  &.shadow:hover {
     -webkit-box-shadow: 0px 3px 8px 0px rgba(38,50,56,0.3);
     -moz-box-shadow: 0px 3px 8px 0px rgba(38,50,56,0.3);
     -ms-box-shadow: 0px 3px 8px 0px rgba(38,50,56,0.3);
@@ -1084,6 +1084,7 @@ footer {
   &-title {
     padding: 1rem;
     text-align: center;
+      background-color: @color-white;
 
     span.sub-title {
       display: block;
@@ -1112,6 +1113,7 @@ footer {
   }
 
   &-middle {
+      background-color: @color-white;
     img {
       width: 100%;
       height: auto;
@@ -1120,6 +1122,7 @@ footer {
 
 
   &-bottom {
+      background-color: @color-white;
     padding: 1.5rem 1rem;
 
     display: -webkit-box;
@@ -1532,5 +1535,75 @@ footer {
       display: inline-block;
       line-height: 1;
     }
+  }
+}
+
+
+.pre-post-box {
+  position: absolute;
+
+  width: 100%;
+  min-height: 18px;
+
+  top: 0;
+  left: 0;
+
+  background-color: @color-grey-400;
+
+    z-index: 9999;
+
+  will-change: height, opacity;
+
+  .spinner {
+    margin: 1.25rem 0;
+    text-align: center;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spinner > div {
+    width: 9px;
+    height: 9px;
+    background-color: @color-white;
+
+    margin-left: 1px;
+    margin-right: 1px;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  .spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+
+  .spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+
+  @-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+  }
+
+  @keyframes sk-bouncedelay {
+    0%, 80%, 100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    } 40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+      }
   }
 }

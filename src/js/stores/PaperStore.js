@@ -5,7 +5,7 @@ var _ = require('underscore');
 
 
 var paperIndex = [];
-var papers = [];
+var papers = new Array();
 var index = 0;
 var lastIndex = null;
 
@@ -28,7 +28,9 @@ function initPaperIndex(_newPaperIndex) {
 }
 
 function addPapers(_newPapers) {
-    papers.concat(_newPapers);
+    for (var idx= 0, len=_newPapers.length; idx<len; idx++) {
+        papers.push(_newPapers[idx]);
+    }
     index++;
 }
 
@@ -40,6 +42,7 @@ function setFiltersAndOrder(_filters, _order) {
 
 var PaperStore = _.extend({}, EventEmitter.prototype, {
     getPapers: function() {
+        /*
         var _papers;
 
         _papers = _.filter(papers, function(paper) {
@@ -73,10 +76,12 @@ var PaperStore = _.extend({}, EventEmitter.prototype, {
         }
 
         return _papers;
+        */
+        return papers;
     },
+
     getPaperIndexes: function() {
-        var indexes = paperIndex.slice(index, (index+1)*8);
-        return indexes;
+        return paperIndex.slice(index, (index+1)*8);
     },
 
     emitInitialize: function() {
@@ -85,17 +90,26 @@ var PaperStore = _.extend({}, EventEmitter.prototype, {
     emitChange: function() {
         this.emit('change');
     },
+    emitFilter: function() {
+        this.emit('filter');
+    },
     addInitializeListener: function(callback) {
         this.on('init', callback);
     },
     addChangeListener: function(callback) {
         this.on('change', callback);
     },
+    addFilterListener: function(callback) {
+        this.on('filter', callback);
+    },
     removeChangeListener: function(callback) {
         this.removeListener('change', callback);
     },
     removeInitializeListener: function(callback) {
         this.removeListener('init', callback);
+    },
+    removeFilterListener: function(callback) {
+        this.removeListener('filter', callback);
     }
 });
 
@@ -111,17 +125,17 @@ AppDispatcher.register(function(payload) {
 
         case Constants.PaperActionType.RECEIVE_PAPERS:
             addPapers(action.papers);
+            PaperStore.emitChange();
             break;
 
         case Constants.PaperActionType.SET_FILTERS_AND_ORDER:
             setFiltersAndOrder(action.filters, action.order);
+            PaperStore.emitFilter();
             break;
 
-    }
-
-    if (action.actionType !== Constants.PaperActionType.RECEIVE_PAPER_INDEX) {
-        PaperStore.emitChange();
+        default:
+            return true;
     }
 });
 
-module.exprots = PaperStore;
+module.exports = PaperStore;

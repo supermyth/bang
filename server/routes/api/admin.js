@@ -3,7 +3,6 @@ var Paper = db.model('Paper');
 
 var Constants = require('../../../src/js/constants/Constants');
 var mongoose = require('mongoose');
-var async = require('async');
 
 
 exports.doRoutes = function(app) {
@@ -54,26 +53,14 @@ var postPaper = function(req,res) {
         });
     }
     else {
-        var updateData = {
-            'titleId': paper.data['titleId'],
-            'title-image': paper.data['title-image'],
-            'text': paper.data['text']
-        };
-        if (paper['type'] != Constants.PaperType.APP) { updateData['tags'] = __createTags(paper.data['tags']); }
+        var updateData = _createNewPaperData(paper);
 
         Paper.findOneAndUpdate(
             {_id: mongoose.Types.ObjectId(paper['_id'])},
             {
                 $set: {
                     'title': paper['title'],
-                    'data': {
-                        'titleId': updateData['titleId'],
-                        'title-image': updateData['title-image'],
-                        'text': updateData['text'],
-                        'tags': updateData['tags'],
-                        'like': paper.data['like'],
-                        'views': paper.data['views']
-                    }
+                    'data': updateData
                 }
             },
             function(err, doc) {
@@ -93,9 +80,9 @@ function _createNewPaperData(paper) {
             _data = {
                 'titleId': paper.data['titleId'],
                 'title-image': paper.data['title-image'],
+                'sub-title': paper.data['sub-title'],
                 'text': paper.data['text'],
-                'like': [],
-                'views': [],
+                'views': (paper.data.hasOwnProperty('views')) ? paper.data['views'] : 0,
                 'tags': __createTags(paper.data['tags'])
             };
             return _data;

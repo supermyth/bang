@@ -10,4 +10,5 @@ exports.doRoutes = function(app) {
     });
 
     require('./api/admin').doRoutes(app);
+    require('./api/paper').doRoutes(app);
 };

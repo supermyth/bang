@@ -31,15 +31,18 @@ module.exports = {
     }),
 
     RESPONSE_SIZE: {
-        PHONE: 480,
-        TABLET: 768,
-        DESKTOP: 960
+        ONE_BY_TWO: 640,
+        TWO_BY_THREE: 960,
+        THREE_BY_FOUR: 1280,
+        FOUR_BY_FIVE: 1600
     },
 
     DEVICE: keyMirror({
-        PHONE: null,
-        TABLET: null,
-        DESKTOP: null
+        ONE: null,
+        TWO: null,
+        THREE: null,
+        FOUR: null,
+        FIVE: null
     }),
 
     CurrentPage: keyMirror({

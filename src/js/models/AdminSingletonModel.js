@@ -111,6 +111,7 @@ var AdminSingletonModel = {
                     'data': {
                         'titleId': '',
                         'text': '',
+                        'sub-title': '',
                         'title-image' : '',
                         'tags': []
                     },
@@ -195,6 +196,7 @@ var AdminSingletonModel = {
 
                 adminPost.find('#post-input-title').val(PaperList[index].title);
                 adminPost.find('#post-input-titleId').val(PaperList[index].data['titleId']);
+                adminPost.find('#post-input-sub-title').val(PaperList[index].data['sub-title']);
                 adminPost.find('#post-input-text').val(PaperList[index].data['text']);
                 adminPost.find('#post-input-title-image').val(PaperList[index].data['title-image']);
 
@@ -238,6 +240,7 @@ var AdminSingletonModel = {
                 PaperList[index].title = paperDOM.find('#post-input-title').val();
                 PaperList[index].data = {
                     'titleId': paperDOM.find('#post-input-titleId').val(),
+                    'sub-title': paperDOM.find('#post-input-sub-title').val(),
                     'text': paperDOM.find('#post-input-text').val(),
                     'title-image' : paperDOM.find('#post-input-title-image').val(),
                     'tags': tags,
