@@ -2,7 +2,7 @@ var User = {
     username: {
         type: String,
         required: true
-    },
+    }
 
 
 };
